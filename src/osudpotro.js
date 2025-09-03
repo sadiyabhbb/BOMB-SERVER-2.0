@@ -1,3 +1,4 @@
+// osudpotro.js
 const axios = require('axios');
 
 async function sendOtp(mobileNumber) {
@@ -17,15 +18,18 @@ async function sendOtp(mobileNumber) {
           'Origin': 'https://osudpotro.com',
           'User-Agent': 'Mozilla/5.0 (Linux; Android 12; M2010J19CG Build/SKQ1.211202.001) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.7258.143 Mobile Safari/537.36',
           'X-Requested-With': 'mark.via.gp'
-          // 'Authorization': 'Bearer <token>'  // যদি লাগে uncomment করো
         }
       }
     );
-
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || error.message);
   }
 }
 
-module.exports = sendOtp;
+// যদি getApiInfo পরে add করতে চাও:
+async function getApiInfo(mobileNumber) {
+  return { api: 'OsudPotro', mobile: mobileNumber || 'N/A' };
+}
+
+module.exports = { sendOtp, getApiInfo };
