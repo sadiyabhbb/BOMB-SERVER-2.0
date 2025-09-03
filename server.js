@@ -1,5 +1,5 @@
 const express = require('express');
-const sendOtp = require('./src/sendOtp');
+const sendOtp = require('./src/osudpotro');
 const getApiInfo = require('./src/info');
 
 const app = express();
